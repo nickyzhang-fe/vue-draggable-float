@@ -1,0 +1,43 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: @default-color;
+  background-color: @body-bg-color;
+  font-family: PingFangSC-Regular, Arial, STHeiti, "Microsoft Yahei", sans-serif;
+  line-height: 1.2;
+  -webkit-overflow-scrolling: touch;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type="text"]:disabled {
+  background-color: @color-white !important;
+}
+
+img[lazy=loading] {
+  background-color: #F2F3F8;
+  opacity: 0.2
+}
+
+img[lazy=loaded] {
+  transition: opacity 0.8s
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
