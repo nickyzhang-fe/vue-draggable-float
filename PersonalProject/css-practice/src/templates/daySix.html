@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .test-skew{
+            position: relative;
+            background: transparent;
+            width: 169px;
+            height: 42px;
+            border: none;
+        }
+        .test-skew::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top:0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            transform: skew(-45deg);
+            background: #75b86b;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+        .header {
+            background: #ffffff;
+            height: 55px;
+        }
+        .logo {
+            float: left;
+            margin-left: 55px;
+            font-family: "黑体";
+            font-size: 21px;
+            color: #393a3a;
+        }
+        .logo img {
+            height: 51px;
+            vertical-align: middle;
+            margin-right: 13px;
+        }
+        .nav {
+            float: right;
+            margin-right: 14px;
+        }
+        .nav li {
+            float: left;
+            list-style: none;
+            text-align: center;
+            height: 52px;
+            width: 100px;
+            /*border-bottom: 3px solid #fff;*/
+            line-height: 52px;
+        }
+        .nav ul > li:nth-child(6){
+            background-image: url("../img/six/header_2.jpg");
+            background-repeat: no-repeat;
+            background-position: 18px 2px;
+        }
+        .nav a {
+            text-decoration: none;
+            display: block;
+            font-family: "微软雅黑";
+            font-size: 14px;
+        }
+        .nav a:link, .nav a:visited {
+            color: #787b83;
+        }
+        .nav a:hover, .nav a:active {
+            color: #ea6b60;
+            border-bottom: 3px solid #ea6b60;
+        }
+        .nav ul > li:nth-child(6) a:link, .nav ul>li:nth-child(6) a:visited {
+            color: #ea6b60;
+        }
+        .nav ul>li:nth-child(1) a:link, .nav ul>li:nth-child(1) a:visited {
+            color: #ea6b60;
+            border-bottom: 3px solid #ea6b60;
+        }
+        .main {
+            height: 690px;
+        }
+        .feature-wrap {
+            height: 690px;
+            background-image: url("../img/six/section_1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .feature-wrap-in {
+            background-color: rgba(0,0,0,0.2);
+            /*opacity: 0.2;*/
+            /*background: transparent;*/
+            height: 457px;
+            padding-top: 233px;
+            color: white;
+            font-family: "微软雅黑";
+        }
+        .feature-wrap-in h1{
+            margin-left: 115px;
+            font-size: 60px;
+        }
+        .feature-wrap-in p {
+            margin-left: 120px;
+            font-size: 20px;
+            margin-top: 40px;
+            margin-bottom: 70px;
+        }
+        .feature-wrap-in input {
+            background: #e74f4d;
+            color: white;
+            height: 70px;
+            width: 320px;
+            font-size: 40px;
+            border: none;
+            margin-left: 120px;
+        }
+        .feature-list {
+            height: 250px;
+            width: 100%;
+            background: white;
+        }
+        .feature-list div{
+            width: 25%;
+            float: left;
+            text-align: center;
+            position: relative;
+        }
+        .feature-list div p{
+            margin-left: 75px;
+            margin-right: 75px;
+            margin-top: 133px;
+            font-size: 14px;
+            font-family: "黑体";
+            color: #aba6a5;
+        }
+        .feature-list div span {
+            position: absolute;
+            height: 50px;
+            width:0;
+            left: 100%;
+            margin-top: 133px;
+            border: 2px solid #aba6a5;
+            bottom: -20px;
+        }
+        .feature-list div:nth-child(1) {
+            background-image: url("../img/six/circle.png");
+            background-repeat: no-repeat;
+            background-position: center 43px;
+        }
+        .feature-list div:nth-child(2) {
+            background-image: url("../img/six/flag.png");
+            background-repeat: no-repeat;
+            background-position: center 43px;
+        }
+        .feature-list div:nth-child(3) {
+            background-image: url("../img/six/flower.png");
+            background-repeat: no-repeat;
+            background-position: center 43px;
+        }
+        .feature-list div:nth-child(4) {
+            background-image: url("../img/six/square.png");
+            background-repeat: no-repeat;
+            background-position: center 43px;
+        }
+        .about-up {
+            height: 270px;
+            padding-top: 90px;
+            background-color: #ededec;
+            text-align: center;
+        }
+        .about-up p{
+            font-size: 40px;
+            margin-top: 54px;
+            font-family: "微软雅黑";
+            color: #aba6a5;
+        }
+        .about-down {
+            height: 290px;
+            background-image: url("../img/six/map.jpg");
+            background-repeat: no-repeat;
+            font-family: "微软雅黑";
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        .about-down h3 {
+            padding-top: 50px;
+        }
+        .about-down p {
+            padding-top: 20px;
+        }
+        .sel {
+            width: 15%;
+            height: 30px;
+            margin-right: 30px;
+        }
+        .sub {
+            width: 15%;
+            background: #e74f4d;
+            color: white;
+            height: 35px;
+            border: none;
+        }
+        .show-top {
+            padding-top: 100px;
+            text-align: center;
+            background: #f7f7f7;
+            height: 501px;
+        }
+        .show-top > div {
+            display: inline-block;
+            width: 217px;
+            height: 391px;
+            margin-right: 38px;
+        }
+        .show-top > div :nth-of-type(4) {
+            margin-right: 0;
+        }
+        .show-top>div div {
+            background: #ffffff;
+            padding:14px 8px;
+            border: 3px solid red;
+            margin-bottom: 22px;
+            height: 309px;
+            float: left;
+        }
+        .show-top>div h4 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #524c4a;
+            float: left;
+            width: 217px;
+        }
+        .show-top>div p{
+            font-size: 12px;
+            color: #7f7773;
+            /*float: left;*/
+            width: 217px;
+        }
+        .show-top>div:nth-of-type(2) h4{
+            font-size: 24px;
+            margin-bottom: 5px;
+            letter-spacing: 23px;
+            margin-left: 10px;
+        }
+        .show-top>div:nth-of-type(2) p{
+            margin-bottom: 7px;
+        }
+        .show-top>div:nth-of-type(2) div:nth-of-type(2){
+            margin-bottom: 0;
+        }
+        .middle-left{
+            width: 66.6%;
+            background-image: url("../img/six/middle-left.jpg");
+            float: left;
+            height: 100%;
+            background-size: cover;
+            color: #ffffff;
+            padding-top: 132px;
+            height: 443px;
+            text-align: center;
+        }
+        .middle-left h2{
+            font-size: 49.47px;
+        }
+        .middle-left h1{
+            font-size: 157.79px;
+        }
+        .middle-left p{
+            font-size: 21.91px;
+        }
+        .middle-right{
+            float: right;
+            width: 33.3%;
+            margin-top: 163px;
+            height: 412px;
+            background-image: url("../img/six/point.png");
+            background-repeat: no-repeat;
+            background-position: center 300px;
+            text-align: center;
+        }
+        .middle-right h3{
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+        .middle-right span{
+            color: #e74f4d;
+        }
+        .middle-right p{
+            font-family: "宋体";
+            font-size: 12px;
+            color: #aaaaaa;
+            text-align: left;
+            padding-left: 69px;
+            padding-right: 69px;
+            line-height: 32px;
+            margin-bottom: 47px;
+        }
+        .middle-right button{
+            width: 107px;
+            height: 34px;
+            color: #e74f4d;
+            border: 1px solid #e74f4d;
+            background-color: #ffffff;
+        }
+        .show-bottom {
+            height: 520px;
+        }
+        .show-bottom div {
+            width: 33.3%;
+            height: 348px;
+            padding-top: 172px;
+            float: left;
+            text-align: center;
+            font-family: "黑体";
+            font-size: 21px;
+        }
+        .show-bottom div:nth-of-type(1){
+            background: #e74f4d;
+            color: white;
+        }
+        .show-bottom div p{
+            margin-bottom: 23px;
+        }
+        .show-bottom div hr {
+            width: 29px;
+            border: 1px solid #abaaaa;
+            margin: 0 auto;
+            margin-bottom: 25px;
+        }
+        .show-bottom div:nth-of-type(1) hr {
+            border: 1px solid #ffffff;
+        }
+        .show-bottom div button{
+            width: 169px;
+            height: 42px;
+            border: 1px solid #e74f4d;
+            background-color: #ffffff;
+            font-size: 21px;
+            font-family: "黑体";
+            color: #e74f4d;
+        }
+        .show-bottom div:nth-of-type(1) button{
+            background-color: #e74f4d;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        .show-bottom div:nth-of-type(3){
+            background-image: url(../img/six/train.png);
+            background-size: cover;
+            padding-top: 0;
+            height: 520px;
+        }
+        .show-bottom div:nth-of-type(3) div{
+            height: 348px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .show-bottom div:nth-of-type(3) div span{
+            width: 0;
+            height: 0;
+            border-left: 25px solid #ffffff;
+            border-bottom: 20px solid transparent;
+            border-top: 20px solid transparent;
+            position: absolute;
+            top: 245px;
+            left: 0;
+        }
+        .volunteer {
+            height: 632px;
+            padding-top: 118px;
+            text-align: center;
+        }
+        .volunteer .title {
+            height: 200px;
+        }
+        .volunteer .title h3{
+            font-family: "黑体";
+            font-size: 21px;
+            color: #323333;
+            margin-bottom: 8px;
+        }
+        .volunteer .title hr{
+            width: 28px;
+            margin: 0 auto;
+            margin-bottom: 15px;
+            border:1px solid #e74f4d;
+        }
+        .volunteer .title p{
+            font-size: 12px;
+            color: #aaaaaa;
+            margin-right: 429px;
+            margin-left: 429px;
+            margin-bottom: 102px;
+        }
+        .volunteer .v-sign {
+            width: 1006px;
+            height: 282px;
+            margin: 0 auto;
+        }
+        .v-sign .argument {
+            text-align: left;
+            width: 293px;
+            height: 282px;
+            float: left;
+        }
+        .v-sign .argument h5 {
+            font-family: "黑体";
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .v-sign .argument p {
+            font-family: "宋体";
+            font-size: 12px;
+            color: #9a9b9b;
+            line-height: 22px;
+        }
+        .v-sign .argument span {
+            float: right;
+            width: 100%;
+            text-align: right;
+            background-image: url("../img/six/arrow.png");
+            background-repeat: no-repeat;
+            background-position: 242px 6px;
+        }
+        .v-sign .form-list {
+            position: relative;
+            float: right;
+            width: 640px;
+            height: 282px;
+        }
+        .v-sign .form-list input {
+            width: 294px;
+            height: 40px;
+            background-color: #ededee;
+            border: none;
+            margin-bottom: 14px;
+            padding-left: 17px;
+            font-family: "宋体";
+            font-size: 12px;
+            color: #231815;
+        }
+        .form-list input:nth-of-type(1), .form-list input:nth-of-type(3){
+            float: left;
+        }
+        .form-list input:nth-of-type(2), .form-list input:nth-of-type(4){
+            float: right;
+        }
+        .form-list textarea{
+            width: 620px;
+            height: 100px;
+            resize: none;
+            border: none;
+            background-color: #ededee;
+            margin-bottom: 14px;
+            font-family: "宋体";
+            font-size: 12px;
+            color: #231815;
+            text-indent: 12em;
+            padding:10px 10px;
+        }
+        .form-list input:nth-of-type(5){
+            width: 640px;
+            font-size: 14px;
+        }
+        .form-list span{
+            position: absolute;
+            top: 118.5px;
+            left: 17px;
+            font-family: "宋体";
+            font-size: 12px;
+            color: #231815;
+        }
+        .footer {
+            height: 325px;
+            background-color: #32353e;
+            padding-top: 90px;
+            position: relative;
+        }
+        .contact h3{
+            font-size: 21px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .contact p{
+            font-size: 12px;
+            text-align: center;
+            font-family: "微软雅黑";
+            color:#ffffff;
+            margin-bottom: 30px;
+
+        }
+        .contact div{
+            width: 510px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+        .contact div input{
+            height: 40px;
+        }
+        .contact .sub{
+            width: 80px;
+            border: none;
+            background-color: #686166;
+            color: #ffffff;
+            font-size: 15px;
+            font-family: "微软雅黑";
+        }
+        .contact .e-m{
+            width: 410px;
+            border: none;
+            float: left;
+            font-size: 14px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .footer-bottom{
+            height: 37px;
+            background-color: #2f3038;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 20px;
+
+        }
+        .contact ul{
+            text-align: center;
+        }
+        .contact ul li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .fb-left{
+            float: left;
+            margin-left: 100px;
+            color: #ffffff;
+            font-family: "微软雅黑";
+            font-size: 12px;
+        }
+        .back-to-top{
+            float: right;
+            margin-right: 50px;
+            color: #ffffff;
+            font-family: "微软雅黑";
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="test-skew">测试skew</div>
+    <div class="header">
+        <div class="logo">
+            <img src="../img/six/header_1.jpg">新世界
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">最新活动</a></li>
+                <li><a href="#">项目介绍</a></li>
+                <li><a href="#">爱心社区</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">登录</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="feature">
+            <div class="feature-wrap">
+                <div class="feature-wrap-in">
+                    <h1>Time of new life</h1>
+                    <p>新时代，年轻的人们让我们一起<br/>体验新生活，享受新生活</p>
+                    <input type="button" value="开始体验"/>
+                </div>
+            </div>
+        </div>
+        <div class="feature-list">
+            <div>
+                <p>打造全新世界观，让你更爱你的生活</p><span></span>
+            </div>
+            <div>
+                <p>丰富多彩的公益活动，发挥新世界的主人公意识</p><span></span>
+            </div>
+            <div><p>时尚的新理念，超前体验未知的生活</p>
+                <span></span>
+            </div>
+            <div><p>完善的培养机制，培养你全新的世界观</p></div>
+        </div>
+        <div class="about">
+            <div class="about-up">
+                <img src="../img/six/new.png">
+                <p>关于新世界，你不知道的还有什么？</p>
+            </div>
+            <div class="about-down">
+                <h3>查找新世界城市活动信息</h3>
+                <p>每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
+                <div style="margin-top: 40px;">
+                    <input type="text" placeholder="中国" class="sel">
+                    <input type="text" placeholder="省份" class="sel">
+                    <input type="text" placeholder="城市" class="sel">
+                    <input type="button" value="搜索" class="sub">
+                </div>
+            </div>
+        </div>
+        <div class="show-world">
+            <div class="show-top">
+                <div>
+                    <div><img src="../img/six/pic_14.jpg"></div>
+                    <h4>北京活动</h4>
+                    <p>新社区大联盟</p>
+                </div>
+                <div>
+                    <div><img src="../img/six/pic_20.jpg"></div>
+                    <h4>上海活动</h4>
+                    <p>夜上海新景观探索</p>
+                </div>
+                <div>
+                    <div><img src="../img/six/pic_17.jpg"></div>
+                    <h4>深圳活动</h4>
+                    <p>全新海岸线观点站</p>
+                </div>
+                <div>
+                    <div><img src="../img/six/pic_11.jpg"></div>
+                    <h4>香港活动</h4>
+                    <p>奢侈消费大派送</p>
+                </div>
+            </div>
+            <div class="show-middle">
+                <div class="middle-left">
+                    <h2>新世界</h2>
+                    <h1>TIME</h1>
+                    <p>@新世界-北京</br>2016.04.01</p>
+                </div>
+                <div class="middle-right">
+                    <h3>新世界/<span>01</span></h3>
+                    <p>新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界</p>
+                    <button>更多详情</button>
+                </div>
+            </div>
+            <div class="show-bottom">
+                <div>
+                    <p>新时代</br>
+                        关于爱生活的我们</p>
+                    <hr/>
+                    <button>查看更多</button>
+                </div>
+                <div>
+                    <p>新时代</br>
+                        关于爱生活的我们</p>
+                    <hr/>
+                    <button>查看更多</button>
+                </div>
+                <div>
+                    <div><span></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="volunteer">
+        <div class="title">
+            <h3>成为我们的志愿者</h3>
+            <hr/>
+            <p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情那就不要犹豫，快来加入我们，成为改变所有人生活的人</p>
+        </div>
+        <div class="v-sign">
+            <div class="argument">
+                <h5>新世界志愿者协议</h5>
+                <p>加入新世界志愿者的人员必须遵守中华人民共和国的相关法律法规，并且本着平等自愿的原则......</p>
+                <span>more</span>
+                <h5>新世界志愿者权利</h5>
+                <p>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格</p>
+                <span>more</span>
+                <h5>更多条款</h5>
+                <span>more</span>
+            </div>
+            <div class="form-list">
+                <input type="text" value="姓名：">
+                <input type="text" value="年龄：">
+                <input type="text" value="联系方式：">
+                <input type="text" value="联系地址：">
+                <textarea ></textarea>
+                <span>请简单描述您梦想的生活:</span>
+                <input type="submit" value="提交申请">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="contact">
+            <h3>联系我们</h3>
+            <p>为了更好的获取我们的最新产品资讯，您可以留下您的电子邮箱快速订购我们的产品资讯<br/>也可以通过以下任何方式关注我们动态</p>
+            <div>
+                <input type="text" class="e-m" placeholder="someone@email.com"></input>
+                <input type="submit" class="sub"></input>
+            </div>
+
+            <ul>
+                <li><a href="#"><img src="../img/six/qq.png"></a></li>
+                <li><a href="#"><img src="../img/six/weibo.png"></a></li>
+                <li><a href="#"><img src="../img/six/twitter.png"></a></li>
+                <li><a href="#"><img src="../img/six/web.png"></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <div class="fb-left">@2016新世界</div>
+            <div class="back-to-top">Back to top</div>
+        </div>
+    </div>
+</body>
+</html>

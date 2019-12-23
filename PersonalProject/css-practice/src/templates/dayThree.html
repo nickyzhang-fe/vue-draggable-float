@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .bg {
+            background: #cccccc;
+            height: 200px;
+            width: 400px;
+            left: 50%;
+            top: 50%;
+            margin-top: -100px;
+            margin-left:-200px;
+            position: absolute;
+        }
+        .first {
+            height: 50px;
+            width: 50px;
+            background: #fc0;
+            border-bottom-right-radius: 50px;
+        }
+        .second {
+            height: 50px;
+            width: 50px;
+            background: #fc0;
+            border-top-left-radius: 50px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            /*float: right;*/
+            /*margin-top: 100px;*/
+        }
+        .triangle_border_up{
+            width:0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 30px;
+            border-color: transparent transparent #323333;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="first"></div>
+
+        <div class="second"></div>
+    </div>
+
+<div class="triangle_border_up"></div>
+</body>
+</html>
