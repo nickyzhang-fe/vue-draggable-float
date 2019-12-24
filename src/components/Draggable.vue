@@ -90,6 +90,7 @@ export default {
     },
     /**
      * 判断元素显示位置
+     * 在窗口改变和move end时调用
      */
     checkDraggablePosition () {
       if ((this.left + this.floatDragDom.width / 2) >= this.clientWidth / 2) { // 判断位置是往左往右滑动
