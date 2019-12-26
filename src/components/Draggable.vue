@@ -19,13 +19,21 @@
 export default {
   name: 'draggable',
   props: {
-    height: {
+    distanceRight: {
       type: Number,
       default: 200
     },
-    scrollVisiable: {
+    distanceBottom: {
+      type: Number,
+      default: 200
+    },
+    isScrollHidden: {
       type: Boolean,
       default: false
+    },
+    isCanDraggable: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -33,7 +41,9 @@ export default {
       clientWidth: null,
       clientHeight: null,
       left: 0,
-      top: 0
+      top: 0,
+      timer: null,
+      currentTop: 0
     }
   },
   created () {
@@ -41,16 +51,16 @@ export default {
     this.clientHeight = document.documentElement.clientHeight
   },
   mounted () {
-    this.$nextTick(() => {
+    this.isCanDraggable && this.$nextTick(() => {
       this.floatDrag = this.$refs.floatDrag
       // 获取元素位置属性
       this.floatDragDom = this.floatDrag.getBoundingClientRect()
       // 设置初始位置
-      this.left = this.clientWidth - this.floatDragDom.width
-      this.top = this.clientHeight - this.floatDragDom.height - 100
+      this.left = this.clientWidth - this.floatDragDom.width - this.distanceRight
+      this.top = this.clientHeight - this.floatDragDom.height - this.distanceBottom
       this.initDraggable()
     })
-    window.addEventListener('scroll', this.handleScroll)
+    this.isScrollHidden && window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('resize', this.handleResize)
   },
   methods: {
@@ -59,7 +69,31 @@ export default {
      * 设置滚动时隐藏悬浮按钮，停止时显示
      */
     handleScroll () {
-
+      this.timer && clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.handleScrollEnd()
+      }, 200)
+      this.currentTop = document.documentElement.scrollTop || document.body.scrollTop
+      if(this.left > this.clientWidth/2) { // 判断元素位置再左侧还是右侧
+          this.left = this.clientWidth + this.floatDragDom.width
+      } else {
+        this.left = -this.floatDragDom.width
+      }
+    },
+    /**
+     * 滚动结束
+     */
+    handleScrollEnd () {
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      if (scrollTop === this.currentTop) {
+        console.log(this.left)
+        if(this.left > this.clientWidth / 2) { // 判断元素位置再左侧还是右侧
+          this.left = this.clientWidth - this.floatDragDom.width
+        } else {
+          this.left = 0
+        }
+        clearTimeout(this.timer)
+      }
     },
     /**
      * 窗口resize监听
@@ -74,16 +108,19 @@ export default {
      */
     initDraggable () {
       this.floatDrag.addEventListener('touchstart', () => {
+        this.canClick = false
         this.floatDrag.style.transition = 'none'
       })
       this.floatDrag.addEventListener('touchmove', (e) => {
-        if (e.targetTouches.length === 1) {
+        this.canClick = true
+        if (e.targetTouches.length === 1) { // 单指拖动
           let touch = event.targetTouches[0]
           this.left = (touch.clientX - this.floatDragDom.width / 2)
           this.top = (touch.clientY - this.floatDragDom.height / 2)
         }
       })
       this.floatDrag.addEventListener('touchend', () => {
+        if (!this.canClick) return // 解决点击事件和touch事件冲突的问题
         this.floatDrag.style.transition = 'all 0.3s'
         this.checkDraggablePosition()
       })
@@ -94,7 +131,7 @@ export default {
      */
     checkDraggablePosition () {
       if ((this.left + this.floatDragDom.width / 2) >= this.clientWidth / 2) { // 判断位置是往左往右滑动
-          this.left = (this.clientWidth - this.floatDragDom.width)
+          this.left = this.clientWidth - this.floatDragDom.width
         } else {
           this.left = 0
         }
