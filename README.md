@@ -12,13 +12,10 @@
 
 ### 功能点
 
-1. 支持循环弹幕
-2. 弹幕不重叠
-3. 支持选择轨道数
-4. 支持弹幕发送
-5. 支持弹幕头像
-6. 支持背景颜色配置
-7. 背景色和渐变背景色
+1. 支持拖拽
+2. 滚动隐藏
+3. 设置初始位置
+4. 支持移动端
 
 ### 使用
 
@@ -28,44 +25,30 @@
 
 | name | type | default | desc  |
 | ------ | ------ | ------ | ------ |
-| barrageList | Array | [] | 弹幕数据 |
-| speed | Number | 4 | 弹幕滚动速度 |
-| loop | Boolean | true | 是否循环滚动 |
-| channels | Number | 2 | 弹幕轨道数 |
-| borderColor | String | '' | 弹幕边框颜色 |
-| background | String | '#FFFFFF' | 弹幕背景色 |
-| linearGradient | String | '' | 弹幕渐变背景色 |
+| distanceRight | Number | 0 | 元素距右侧距离 |
+| distanceBottom | Number | 100 | 元素距底部距离 |
+| isScrollHidden | Boolean | false | 滚动时按钮是否隐藏 |
+| isCanDraggable | Boolean | true | 是否可拖拽 |
 
 ### 使用
 
 ```
-<barrage
-    ref="barrage"
-    class="barrage"
-    :barrage-list="barrageList"
-    :speed="speed"
-    :loop="loop"
-    :channels="channels"
-    :border-color="borderColor"
-    :background="background"
-    :linear-gradient="linearGradient"/>
+<draggable 
+	:distanceRight='100'
+	:distanceBottom='100'
+	:isScrollHidden='false' 
+	:isCanDraggable='true'>
+    <div>测试样式</div>
+</draggable>
     
-import Barrage from 'vue-barrage'
+import Draggable from 'vue-barrage'
 
-// 弹幕数据初始化  
-this.barrageList = [{
-	icon: 'https://user-gold-cdn.xitu.io/2019/3/3/169412b9920a8e31?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1',
-   content: '试数据测试数测试数据数测试数据',
-   color: 'white'
-}, {
-   content: '试数据测试数测试数据数测试数据',
-   color: 'white'
-}]
-// 新增弹幕
-this.$refs.barrage.add({
-   content: '增加一条新的弹幕增加一条新的弹幕',
-   color: 'white'
-})
+export default {
+  name: 'draggable',
+  components: {
+    Draggable
+  }
+}
 ```
 
 [源码地址](https://github.com/5ibinbin/vue-draggable-float)

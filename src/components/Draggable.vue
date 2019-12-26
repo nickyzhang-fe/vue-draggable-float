@@ -21,11 +21,11 @@ export default {
   props: {
     distanceRight: {
       type: Number,
-      default: 200
+      default: 0
     },
     distanceBottom: {
       type: Number,
-      default: 200
+      default: 100
     },
     isScrollHidden: {
       type: Boolean,
