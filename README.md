@@ -1,14 +1,22 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-09-02 23:57:42
+ * @LastEditTime : 2019-12-26 23:43:36
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /vue-draggable/README.md
+ -->
 # vue-draggable-float
 
 ### 可拖动的悬浮组件
 
 ### 拖动效果
 
-![barrage](https://user-gold-cdn.xitu.io/2019/7/20/16c0f1a946a59f3e?w=480&h=188&f=gif&s=4517801)
+![Draggable](https://user-gold-cdn.xitu.io/2019/12/26/16f42e02c2eefbab?w=335&h=600&f=gif&s=5226115)
 
 ### 在线DEMO
 
-效果如果看不到请[点击这里](https://user-gold-cdn.xitu.io/2019/7/20/16c0f1a946a59f3e?w=480&h=188&f=gif&s=4517801)
+如果看不到请[点击这里](https://user-gold-cdn.xitu.io/2019/12/26/16f42e02c2eefbab?w=335&h=600&f=gif&s=5226115)
 
 ### 功能点
 
@@ -19,7 +27,7 @@
 
 ### 使用
 
-`npm install vue-barrage`
+`npm install vue-draggable-float`
 
 ### 参数配置
 
@@ -41,7 +49,7 @@
     <div>测试样式</div>
 </draggable>
     
-import Draggable from 'vue-barrage'
+import Draggable from 'vue-draggable-float'
 
 export default {
   name: 'draggable',
