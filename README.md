@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-09-02 23:57:42
- * @LastEditTime : 2019-12-26 23:43:36
+ * @LastEditTime : 2019-12-29 23:08:55
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-draggable/README.md
@@ -37,6 +37,7 @@
 | distanceBottom | Number | 100 | 元素距底部距离 |
 | isScrollHidden | Boolean | false | 滚动时按钮是否隐藏 |
 | isCanDraggable | Boolean | true | 是否可拖拽 |
+| zIndex | Number | 50 | Fixed定位的层级 |
 
 ### 使用
 
