@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-29 11:13:00
+ * @LastEditTime : 2019-12-29 11:18:02
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /vue-draggable-float/src/App.vue
+ -->
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
@@ -11,7 +19,7 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Draggable from './components/Draggable'
-
+// import Draggable from 'vue-draggable-float'
 export default {
   name: 'app',
   components: {
