@@ -47,7 +47,8 @@
 	:distanceRight='100'
 	:distanceBottom='100'
 	:isScrollHidden='false' 
-	:isCanDraggable='true'>
+	:isCanDraggable='true'
+	:zIndex="100">
     <div>测试样式</div>
 </draggable>
     
