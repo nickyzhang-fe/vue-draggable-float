@@ -24,6 +24,7 @@
 2. 滚动隐藏
 3. 设置初始位置
 4. 支持移动端
+5. 支持PC端
 
 ### 使用
 
@@ -37,6 +38,7 @@
 | distanceBottom | Number | 100 | 元素距底部距离 |
 | isScrollHidden | Boolean | false | 滚动时按钮是否隐藏 |
 | isCanDraggable | Boolean | true | 是否可拖拽 |
+| zIndex | Number | 50 | Fixed控制层级 |
 
 ### 使用
 
