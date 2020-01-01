@@ -1,7 +1,7 @@
 <!--
  * @Author: nickyzhang
  * @Date: 2019-12-23 21:48:48
- * @LastEditTime : 2019-12-29 15:30:50
+ * @LastEditTime : 2020-01-01 10:13:09
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /draggable/src/components/Draggable.vue
@@ -13,6 +13,8 @@
     :style="{left: left + 'px', top: top + 'px', zIndex: zIndex}"
     @touchmove.prevent
     @mousemove.prevent
+    @mousedown="mouseDown"
+    @mouseup="mouseUp"
   >
     <slot></slot>
   </div>
@@ -125,52 +127,33 @@ export default {
       this.floatDrag.addEventListener("touchstart", this.toucheStart);
       this.floatDrag.addEventListener("touchmove", e => this.touchMove(e));
       this.floatDrag.addEventListener("touchend", this.touchEnd);
-
-      this.floatDrag.addEventListener("mousedown", e => {
-        console.log("mousedown");
-        console.log("mousedown", e);
-        const event = e || window.event;
-        if (event.preventDefault) {
-          event.preventDefault();
-        }
-        this.isMoving = true;
-        this.canClick = false;
-        this.floatDrag.style.transition = "none";
-        this.floatDrag.addEventListener("mousemove", e => {
-          e.preventDefault();
-          if (this.isMoving) {
-            const event = e || window.event;
-            console.log("mousemove");
-            this.canClick = true;
-            this.left = event.clientX - this.floatDragDom.width / 2;
-            this.top = event.clientY - this.floatDragDom.height / 2;
-          }
-        });
-        this.floatDrag.addEventListener("mouseup", () => {
-          console.log("mouseup");
-          this.isMoving = false;
-          if (!this.canClick) return; // 解决点击事件和touch事件冲突的问题
-          this.floatDrag.style.transition = "all 0.3s";
-          this.checkDraggablePosition();
-        });
-      });
-
-      this.floatDrag.addEventListener("mouseover", () => {
-        console.log("mouseover");
-      });
-      this.floatDrag.addEventListener("mouseout", () => {
-        console.log("mouseout");
-        this.isMoving = false;
-        if (!this.canClick) return; // 解决点击事件和touch事件冲突的问题
-        this.floatDrag.style.transition = "all 0.3s";
-        this.checkDraggablePosition();
-      });
     },
-    mouseUp() {},
-    mouseMove() {},
+    mouseDown(e) {
+      const event = e || window.event;
+      const that = this;
+      let floatDragWidth = this.floatDragDom.width / 2;
+      let floatDragHeight = this.floatDragDom.height / 2;
+      if (event.preventDefault) {
+        event.preventDefault();
+      }
+      this.canClick = false;
+      this.floatDrag.style.transition = "none";
+      document.onmousemove = function(e) {
+        var event = e || window.event;
+        that.left = event.clientX - floatDragWidth;
+        that.top = event.clientY - floatDragHeight;
+      };
+    },
+    mouseUp() {
+      document.onmousemove = null;
+      this.checkDraggablePosition();
+      this.floatDrag.style.transition = "all 0.3s";
+    },
+
     toucheStart() {
       this.canClick = false;
       this.floatDrag.style.transition = "none";
+      () => {};
     },
     touchMove(e) {
       this.canClick = true;
