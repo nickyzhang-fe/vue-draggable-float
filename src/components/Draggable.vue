@@ -1,7 +1,7 @@
 <!--
  * @Author: nickyzhang
  * @Date: 2019-12-23 21:48:48
- * @LastEditTime : 2020-01-01 10:13:09
+ * @LastEditTime : 2020-01-01 10:22:06
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /draggable/src/components/Draggable.vue
@@ -149,11 +149,9 @@ export default {
       this.checkDraggablePosition();
       this.floatDrag.style.transition = "all 0.3s";
     },
-
     toucheStart() {
       this.canClick = false;
       this.floatDrag.style.transition = "none";
-      () => {};
     },
     touchMove(e) {
       this.canClick = true;
